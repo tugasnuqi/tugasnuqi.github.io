@@ -1,0 +1,40 @@
+
+/* menu */
+function getMenumanager(id) {
+    showBasedModal();
+    $.ajax({
+        type: 'GET',
+        url: APP_URL + '/home/api/' + id,
+        dataType: "html",
+        success: function (html) {
+            $("#navbar_based_modal_content").html(html);
+        },
+        error: function (err) {
+            $("#navbar_based_modal_content").html(
+                `<div style="text-align:center; font-size:1.5rem">Upss.. Maaf telah terjadi kendala saat menyiapkan data, saat ini konten belum bisa ditampilkan <br> Silakan dicoba kembali</div>`
+            );
+            console.log(err)
+        }
+    })
+}
+
+/* profile */
+function getProfil(id) {
+    showBasedModal();
+    $.ajax({
+        type: 'GET',
+        url: APP_URL + '/home/profil/' + id,
+        dataType: "html",
+        success: function (html) {
+            $("#navbar_based_modal_content").html(html);
+        },
+        error: function (err) {
+            $("#navbar_based_modal_content").html(
+                `<div style="text-align:center; font-size:1.5rem">Upss.. Maaf telah terjadi kendala saat menyiapkan data, saat ini konten belum bisa ditampilkan <br> Silakan dicoba kembali</div>`
+            );
+            console.log(err)
+        }
+    })
+}
+
+
