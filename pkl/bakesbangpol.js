@@ -11,7 +11,7 @@ function getMenumanager(id) {
         },
         error: function (err) {
             $("#navbar_based_modal_content").html(
-                `<div style="text-align:center; font-size:1.5rem">error</div>`
+                `<div style="text-align:center; font-size:1.5rem">isi</div>`
             );
             console.log(err)
         }
@@ -30,7 +30,7 @@ function getProfil(id) {
         },
         error: function (err) {
             $("#navbar_based_modal_content").html(
-                `<div style="text-align:center; font-size:1.5rem">error</div>`
+                `<div style="text-align:center; font-size:1.5rem">isi</div>`
             );
             console.log(err)
         }
