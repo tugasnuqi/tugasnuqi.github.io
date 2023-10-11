@@ -314,166 +314,200 @@
     </div>
   </div>
   <script>
-    $('#topNav,#toolbar-bottom').removeClass("show-element");
-    $('#topNav,#toolbar-bottom').addClass("hide-element");
-
-    $(() => {
-
-      // $('#topNav,#toolbar-bottom').hide();
-      $("#toolbar-p-1-container").addClass("bg-transparant");
-
-
-      $('#md-nlstmenu').slick({
-        draggable: true,
-        autoplay: true,
-        /* this is the new line */
-        autoplaySpeed: 2000,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        touchThreshold: 1000,
-        vertical: true,
-        verticalSwiping: true,
-        prevArrow: $('.btn-left'),
-        nextArrow: $('.btn-right'),
-
-      });
-
-
-      let owl3 = $("#dt-banner-top-pp-2");
-      owl3.owlCarousel({
-        singleItem: true,
-        autoPlay: true,
-        autoPlayTimeout: 200,
-      });
-
-
-
-      var lastScrollTop = 0;
-      var isClikedBtnJelajah = false;
-
-      /*$("#btn-jelajah").click(() => {
-          window.history.pushState('', '', '/');
-          // console.log("click btn jelajah")
-          isClikedBtnJelajah = true;
-      })*/
-
-
-      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-      if (window.location.hash && isChrome) {
-        setTimeout(function () {
-          var hash = window.location.hash;
-          window.location.hash = "";
-          window.location.hash = hash;
-        }, 300);
-      }
-
-
-
-
-      // $("#p-2-inner").fadeOut()
-      // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-
-
-
-      $("#main-content").scroll(function (e) {
-        var scrollTop = $(this).scrollTop()
-
-        if (scrollTop > 300) {
-          // console.log(scrollTop)
-
-          // window.location.href = "#p-2"
-
-          $('#topNav,#toolbar-bottom').addClass("show-element");
-          $('#topNav,#toolbar-bottom').removeClass("hide-element");
-          // $('#topNav,#toolbar-bottom').fadeOut(300);
-          $("#toolbar-p-1").addClass("bottom-based-tools-wrp")
-          $("#toolbar-p-1-container").removeClass("bg-transparant");
-
-          // $('#topNav').fadeIn(300);
-          // $('#p-1').fadeOut(300);
-
-          if (scrollTop > 300 && scrollTop < 350) {
-            if (lastScrollTop < scrollTop && isClikedBtnJelajah == false) {
-              // console.log("scroll bottom and non click btn jelajah")
-              // window.location.href = "#p-2"
-              // window.history.pushState('', '', '/');
-
+    		$('#topNav,#toolbar-bottom').removeClass("show-element");
+            $('#topNav,#toolbar-bottom').addClass("hide-element");
+			function submitSearch(e) {
+			
+			    $("#id-search-form").submit()
+			
+			    // console.log(e)
+			    // if ($("#search-input-form").val() != "") {
+			    //     $("#id-search-form").submit()
+			    // }
+			
+			}
+			function listPopup() {
+                $.ajax({
+                    type: 'GET',
+                    url: APP_URL + '/home/popup',
+                    dataType: "html",
+                    success: function(html) {
+                        console.log(html.length)
+                        if(html.length > 10){
+                            showBasedModal()
+                            setTimeout(() => {  
+                                $("#navbar_based_modal_content").html(html);
+                            }, 100);
+                        }
+    
+                    },
+                    error: function(err) {
+                        $("#navbar_based_modal_content").html(
+                            `<div style="text-align:center; font-size:1.5rem">Upss.. Maaf telah terjadi kendala saat menyiapkan data, saat ini konten belum bisa ditampilkan <br> Silakan dicoba kembali</div>`
+                            );
+                        // console.log(err)
+                    }
+                })
             }
-          }
-
-
-
-          if (scrollTop > 600 && scrollTop < 700) {
-
-            if (lastScrollTop > scrollTop && isClikedBtnJelajah == false) {
-              // console.log("try scroll up")
-              // console.log("try to p-1")
-              // window.location.href = "#p-1"
-              // window.history.pushState('', '', '/');
-
-            }
-
-          }
-
-          setTimeout(() => {
-            isClikedBtnJelajah = false
-          }, 200);
-
-        } else {
-
-
-
-          $("#toolbar-p-1").removeClass("bottom-based-tools-wrp")
-          $("#toolbar-p-1-container").addClass("bg-transparant");
-
-
-          // $('#topNav').fadeOut(300);
-
-
-
-          $('#topNav,#toolbar-bottom').removeClass("show-element");
-          $('#topNav,#toolbar-bottom').addClass("hide-element");
-
-          isClikedBtnJelajah == false
-        }
-
-        lastScrollTop = $(this).scrollTop()
-
-      });
-
-
-      setTimeout(() => {
-        $("#bwi-brand").removeClass('typewriter');
-      }, 3000);
-
-      // setInterval(() => {
-
-
-      //     setTimeout(() => {
-      //         $("#bwi-brand").removeClass('coloring-text-logo');
-      //         $("#bwi-brand").addClass('coloring-text-logo-x'); 
-
-      //         setTimeout(() => {
-      //             $("#bwi-brand").addClass('coloring-text-logo-x'); 
-
-      //             setTimeout(() => {
-      //             $("#bwi-brand").removeClass('coloring-text-logo-x'); 
-      //             $("#bwi-brand").addClass('coloring-text-logo'); 
-
-
-      //             }, 500);
-
-      //         }, 750);
-      //     }, 3000);
-
-      //     console.log("df")
-
-      // }, 1000);
-
-    })
-
-  </script>
+			
+			
+			$(() => {
+			    			    
+			    // $('#topNav,#toolbar-bottom').hide();
+			    $("#toolbar-p-1-container").addClass("bg-transparant");
+			
+			
+			    $('#md-nlstmenu').slick({
+			        draggable: true,
+			        autoplay: true,
+			        /* this is the new line */
+			        autoplaySpeed: 2000,
+			        infinite: true,
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			        touchThreshold: 1000,
+			        vertical: true,
+			        verticalSwiping: true,
+			        prevArrow: $('.btn-left'),
+			        nextArrow: $('.btn-right'),
+			
+			    });
+			
+			
+			    let owl3 = $("#dt-banner-top-pp-2");
+			    owl3.owlCarousel({
+			        singleItem: true,
+			        autoPlay: true,
+			        autoPlayTimeout: 200,
+			    });
+			
+			
+			
+			    var lastScrollTop = 0;
+			    var isClikedBtnJelajah = false;
+			
+			    /*$("#btn-jelajah").click(() => {
+			        window.history.pushState('', '', '/');
+			        // console.log("click btn jelajah")
+			        isClikedBtnJelajah = true;
+			    })*/
+			
+			
+			    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+			    if (window.location.hash && isChrome) {
+			        setTimeout(function() {
+			            var hash = window.location.hash;
+			            window.location.hash = "";
+			            window.location.hash = hash;
+			        }, 300);
+			    }
+			
+			
+			
+			
+			    // $("#p-2-inner").fadeOut()
+			    // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+			
+			
+			
+			    $("#main-content").scroll(function(e) {
+			        var scrollTop = $(this).scrollTop()
+			
+			        if (scrollTop > 300) {
+			            // console.log(scrollTop)
+			
+			            // window.location.href = "#p-2"
+			
+			            $('#topNav,#toolbar-bottom').addClass("show-element");
+			            $('#topNav,#toolbar-bottom').removeClass("hide-element");
+			            // $('#topNav,#toolbar-bottom').fadeOut(300);
+			            $("#toolbar-p-1").addClass("bottom-based-tools-wrp")
+			            $("#toolbar-p-1-container").removeClass("bg-transparant");
+			
+			            // $('#topNav').fadeIn(300);
+			            // $('#p-1').fadeOut(300);
+			
+			            if (scrollTop > 300 && scrollTop < 350) {
+			                if (lastScrollTop < scrollTop && isClikedBtnJelajah == false) {
+			                    // console.log("scroll bottom and non click btn jelajah")
+			                    // window.location.href = "#p-2"
+			                    // window.history.pushState('', '', '/');
+			
+			                }
+			            }
+			
+			
+			
+			            if (scrollTop > 600 && scrollTop < 700) {
+			
+			                if (lastScrollTop > scrollTop && isClikedBtnJelajah == false) {
+			                    // console.log("try scroll up")
+			                    // console.log("try to p-1")
+			                    // window.location.href = "#p-1"
+			                    // window.history.pushState('', '', '/');
+			
+			                }
+			
+			            }
+			
+			            setTimeout(() => {
+			                isClikedBtnJelajah = false
+			            }, 200);
+			
+			        } else {
+			
+			
+			
+			            $("#toolbar-p-1").removeClass("bottom-based-tools-wrp")
+			            $("#toolbar-p-1-container").addClass("bg-transparant");
+			
+			
+			            // $('#topNav').fadeOut(300);
+			
+			
+			
+			            $('#topNav,#toolbar-bottom').removeClass("show-element");
+			            $('#topNav,#toolbar-bottom').addClass("hide-element");
+			
+			            isClikedBtnJelajah == false
+			        }
+			
+			        lastScrollTop = $(this).scrollTop()
+			
+			    });
+			
+			
+			    setTimeout(() => {
+			        $("#bwi-brand").removeClass('typewriter');
+			    }, 3000);
+			
+			    // setInterval(() => {
+			
+			        
+			    //     setTimeout(() => {
+			    //         $("#bwi-brand").removeClass('coloring-text-logo');
+			    //         $("#bwi-brand").addClass('coloring-text-logo-x'); 
+			            
+			    //         setTimeout(() => {
+			    //             $("#bwi-brand").addClass('coloring-text-logo-x'); 
+			                
+			    //             setTimeout(() => {
+			    //             $("#bwi-brand").removeClass('coloring-text-logo-x'); 
+			    //             $("#bwi-brand").addClass('coloring-text-logo'); 
+			                
+			                    
+			    //             }, 500);
+			                
+			    //         }, 750);
+			    //     }, 3000);
+			
+			    //     console.log("df")
+			        
+			    // }, 1000);
+			
+			})
+			
+		</script>
   <!-- SCROLL TO TOP -->
   <a href="#" id="toTop"></a>
   <!-- JAVASCRIPT FILES -->
