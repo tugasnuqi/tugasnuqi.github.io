@@ -21,7 +21,7 @@
     right: 0;
     position: relative;
     z-index: 0;
-    background: url() no-repeat center center fixed;
+    background: no-repeat center center fixed;
     background-attachment: fixed;
     /* background: linear-gradient(10deg, #03b5d463 5%, #ffffff, #ebfcff63); */
     -webkit-background-size: cover;
