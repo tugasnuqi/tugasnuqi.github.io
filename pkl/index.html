@@ -539,18 +539,18 @@
 
       // make it as accordion for smaller screens
       if ($(window).width() > 100) {
-        $('.dropdown-menu a').click(function (e) {
+        $('.dropdown-menu a').click(function(e) {
           e.preventDefault();
           if ($(this).next('.submenu').length) {
             $(this).next('.submenu').toggle();
           }
-          $('.dropdown').on('hide.bs.dropdown', function () {
+          $('.dropdown').on('hide.bs.dropdown', function() {
             $(this).find('.submenu').hide();
           })
         });
 
         //mobile out of canvas
-        $("[data-trigger]").on("click", function (e) {
+        $("[data-trigger]").on("click", function(e) {
           console.log("showing element ...")
           e.preventDefault();
           e.stopPropagation();
@@ -580,7 +580,7 @@
         });
 
 
-        $(".btn-close, .screen-overlay").click(function (e) {
+        $(".btn-close, .screen-overlay").click(function(e) {
           $(".screen-overlay").removeClass("show");
           $(".mobile-offcanvas").removeClass("show");
           $("#navbar_based_modal_content").html(``)
@@ -595,8 +595,8 @@
         });
 
 
-        $(".mobile-offcanvas").click(function (e) {
-          if (e.target.className == "must-close mobile-offcanvas show") {
+        $(".mobile-offcanvas").click(function(e) {
+          if (e.target.className == "must-close mobile-offcanvas show"){
             $(".screen-overlay").removeClass("show");
             $(".mobile-offcanvas").removeClass("show");
             $("#navbar_based_modal_content").html(``)
@@ -620,7 +620,7 @@
   <!--<div id="contact"></div>-->
   <script src="https://tugasnuqi.github.io/pkl/js/fe/jquery.smartmenus.min.js"></script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('#main-menu').smartmenus();
     });
   </script>
