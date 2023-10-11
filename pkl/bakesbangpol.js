@@ -4,7 +4,7 @@ function getMenumanager(id) {
     showBasedModal();
     $.ajax({
         type: 'GET',
-        url: APP_URL + '/home/api/' + id,
+        url: APP_URL + '/nuqi/kontak/' + id,
         dataType: "html",
         success: function (html) {
             $("#navbar_based_modal_content").html(html);
@@ -23,7 +23,7 @@ function getProfil(id) {
     showBasedModal();
     $.ajax({
         type: 'GET',
-        url: APP_URL + '/home/profil/' + id,
+        url: APP_URL + '/nuqi/profil/' + id,
         dataType: "html",
         success: function (html) {
             $("#navbar_based_modal_content").html(html);
