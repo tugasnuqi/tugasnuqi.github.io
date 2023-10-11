@@ -1,4 +1,4 @@
-
+/*
 /* menu */
 function getMenumanager(id) {
     showBasedModal();
@@ -38,3 +38,4 @@ function getProfil(id) {
 }
 
 
+*/
